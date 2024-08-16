@@ -19,7 +19,7 @@ const textChange = document.querySelector('.js-text');
 
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+    return Math.ceil(Math.random() * max);
 };
 
 const computerGame = () =>{
@@ -35,25 +35,25 @@ const computerGame = () =>{
 };
 
 const gamePlayer = (selectValue)=> {
-    const resultComputer = computerGame()
+    const resultComputer = computerGame();
     console.log (resultComputer);
     if (selectValue === resultComputer){
-        textChange.innerHTML = `Empate`    
-    } else if (selectValue === `Piedra`|| resultComputer `Papel`){
+        textChange.innerHTML = `Empate`;    
+    } else if (
+      (selectValue === `Piedra` && resultComputer `Papel`) || 
+      (selectValue === `Papel` && resultComputer `Tijera`)||
+      (selectValue === `Piedra` && resultComputer `Papel`)
+    ){
         textChange.innerHTML = `Perdiste`
-    } else if (selectValue === `Tijera` || resultComputer `Papel`){
+    } else if (
+        (selectValue === `Tijera` && resultComputer `Papel`)||
+        (selectValue === `Papel` && resultComputer `Piedra`)||
+        (selectValue === `Piedra` && resultComputer `Tijera`)
+    ){
         textChange.innerHTML = `Ganaste`
     }
 };
     
-
-
-
-   
- 
-
-
-
 
 const handleClickGame = (event) =>{
     event.preventDefault();
